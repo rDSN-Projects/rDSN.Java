@@ -13,7 +13,7 @@ endif()
 message (STATUS ${DSN_ROOT} "${DSN_ROOT}/bin/dsn.cmake")
 include("${DSN_ROOT}/bin/dsn.cmake")
 
-project(dsn C CXX)
+project(dsn.java C CXX)
 dsn_common_setup()
 
 add_subdirectory(src)
