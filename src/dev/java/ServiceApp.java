@@ -1,7 +1,5 @@
 package dsn.dev.java;
 
-import dsn.dev.java.utils.*;
-
 public abstract class ServiceApp {
     public ServiceApp()
     {

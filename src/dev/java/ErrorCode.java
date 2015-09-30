@@ -1,5 +1,4 @@
-package dsn.dev.java.utils;
-import dsn.dev.java.Nativecalls;
+package dsn.dev.java;
 
 public class ErrorCode {
 	public static ErrorCode ERR_OK = new ErrorCode("ERR_OK");

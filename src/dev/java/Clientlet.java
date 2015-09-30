@@ -1,7 +1,5 @@
 package dsn.dev.java;
 
-import dsn.dev.java.utils.*;
-
 public class Clientlet
 {
 	protected long _handle = 0;

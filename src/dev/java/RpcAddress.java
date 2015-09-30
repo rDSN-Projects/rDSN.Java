@@ -1,5 +1,4 @@
-package dsn.dev.java.utils;
-import dsn.dev.java.Nativecalls;
+package dsn.dev.java;
 
 public class RpcAddress {
 	public RpcAddress(byte[] ad)

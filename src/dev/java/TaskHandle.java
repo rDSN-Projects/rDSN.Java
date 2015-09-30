@@ -1,6 +1,4 @@
-package dsn.dev.java.utils;
-import dsn.dev.java.Nativecalls;
-import dsn.dev.java.GlobalInterOpLookupTable;
+package dsn.dev.java;
 
 public class TaskHandle {
 	

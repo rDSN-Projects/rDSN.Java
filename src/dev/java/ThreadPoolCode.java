@@ -1,5 +1,4 @@
-package dsn.dev.java.utils;
-import dsn.dev.java.Nativecalls;
+package dsn.dev.java;
 
 public class ThreadPoolCode {
 	public static ThreadPoolCode THREAD_POOL_INVALID = new ThreadPoolCode("THREAD_POOL_INVALID");

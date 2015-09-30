@@ -1,5 +1,4 @@
-package dsn.dev.java.utils;
-import dsn.dev.java.Nativecalls;
+package dsn.dev.java;
 
 public class TaskCode {
 	public static TaskCode TASK_CODE_INVALID = new TaskCode("TASK_CODE_INVALID", Nativecalls.dsn_task_type_t.TASK_TYPE_COMPUTE, Nativecalls.dsn_task_priority_t.TASK_PRIORITY_COMMON, ThreadPoolCode.THREAD_POOL_DEFAULT);
