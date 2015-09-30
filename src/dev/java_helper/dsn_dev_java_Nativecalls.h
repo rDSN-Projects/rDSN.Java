@@ -42,18 +42,146 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1run_1config
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_address_build
- * Signature: (Ljava/lang/String;S)[B
+ * Signature: (Ljava/lang/String;S)J
  */
-JNIEXPORT jbyteArray JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build
   (JNIEnv *, jclass, jstring, jshort);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
- * Method:    dsn_primary_address2
- * Signature: ()[B
+ * Method:    dsn_address_build_ipv4
+ * Signature: (IS)J
  */
-JNIEXPORT jbyteArray JNICALL Java_dsn_dev_java_Nativecalls_dsn_1primary_1address2
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build_1ipv4
+  (JNIEnv *, jclass, jint, jshort);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_address_build_uri
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build_1uri
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_address_build_group
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build_1group
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_uri_build
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1uri_1build
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_uri_destroy
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1uri_1destroy
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_build
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1build
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_add
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1add
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_remove
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1remove
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_set_leader
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1set_1leader
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_get_leader
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1get_1leader
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_is_leader
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1is_1leader
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_next
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1next
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_group_destroy
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1destroy
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_primary_address
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1primary_1address
   (JNIEnv *, jclass);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_ipv4_from_host
+ * Signature: (Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_dsn_dev_java_Nativecalls_dsn_1ipv4_1from_1host
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_ipv4_local
+ * Signature: (Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_dsn_dev_java_Nativecalls_dsn_1ipv4_1local
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     dsn_dev_java_Nativecalls
+ * Method:    dsn_address_to_string
+ * Signature: (J)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1to_1string
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
@@ -594,17 +722,17 @@ JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1rw_1ptr
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_msg_from_address
- * Signature: (J[B)[B
+ * Signature: (J)J
  */
-JNIEXPORT jbyteArray JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1from_1address
-  (JNIEnv *, jclass, jlong, jbyteArray);
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1from_1address
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_msg_to_address
- * Signature: (J)[B
+ * Signature: (J)J
  */
-JNIEXPORT jbyteArray JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1to_1address
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1to_1address
   (JNIEnv *, jclass, jlong);
 
 /*
@@ -634,26 +762,26 @@ JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1create_1response
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_rpc_call
- * Signature: ([BJJ)V
+ * Signature: (JJJ)V
  */
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1call
-  (JNIEnv *, jclass, jbyteArray, jlong, jlong);
+  (JNIEnv *, jclass, jlong, jlong, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_rpc_call_wait
- * Signature: ([BJ)J
+ * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1call_1wait
-  (JNIEnv *, jclass, jbyteArray, jlong);
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_rpc_call_one_way
- * Signature: ([BJ)V
+ * Signature: (JJ)V
  */
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1call_1one_1way
-  (JNIEnv *, jclass, jbyteArray, jlong);
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
@@ -722,18 +850,18 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1write
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_file_copy_remote_directory
- * Signature: ([BLjava/lang/String;Ljava/lang/String;ZJJ)V
+ * Signature: (JLjava/lang/String;Ljava/lang/String;ZJJ)V
  */
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1copy_1remote_1directory
-  (JNIEnv *, jclass, jbyteArray, jstring, jstring, jboolean, jlong, jlong);
+  (JNIEnv *, jclass, jlong, jstring, jstring, jboolean, jlong, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls
  * Method:    dsn_file_copy_remote_files
- * Signature: ([BLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZJJ)V
+ * Signature: (JLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZJJ)V
  */
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1copy_1remote_1files
-  (JNIEnv *, jclass, jbyteArray, jstring, jobjectArray, jstring, jboolean, jlong, jlong);
+  (JNIEnv *, jclass, jlong, jstring, jobjectArray, jstring, jboolean, jlong, jlong);
 
 /*
  * Class:     dsn_dev_java_Nativecalls

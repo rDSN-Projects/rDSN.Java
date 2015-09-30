@@ -1,6 +1,6 @@
 package dsn.app.echo;
 
-import dsn.dev.java.utils.ErrorCode;
+import dsn.dev.java.*;
 
 public class ResponseMessage {
 	ResponseMessage() {}

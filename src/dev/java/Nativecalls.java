@@ -64,8 +64,24 @@ public class Nativecalls
     public native static void          dsn_run_config(String config, boolean sleep_after_init);
     
     //-----------------------------address--------------------------------------
-    public native static byte[]        dsn_address_build(String host, short port);
-    public native static byte[]        dsn_primary_address2();
+    public native static long          dsn_address_build(String host, short port);
+    public native static long          dsn_address_build_ipv4(int ipv4, short port);
+    public native static long          dsn_address_build_uri(long uri);
+    public native static long          dsn_address_build_group(long g);
+    public native static long          dsn_uri_build(String url);
+    public native static void          dsn_uri_destroy(long uri);
+    public native static long          dsn_group_build(String name);
+    public native static boolean       dsn_group_add(long g, long ep);
+    public native static boolean       dsn_group_remove(long g, long ep);
+    public native static void          dsn_group_set_leader(long g, long ep);
+    public native static long          dsn_group_get_leader(long g);
+    public native static boolean       dsn_group_is_leader(long g, long ep);
+    public native static long          dsn_group_next(long g, long ep);
+    public native static void          dsn_group_destroy(long g);
+    public native static long          dsn_primary_address();
+    public native static int           dsn_ipv4_from_host(String name);
+    public native static int           dsn_ipv4_local(String network_interface);
+    public native static String        dsn_address_to_string(long addr);
     
     //---------------------------time/rand-----------------------------------
     public native static long dsn_now_ns();
@@ -201,14 +217,14 @@ public class Nativecalls
     public native static int            dsn_msg_write(long msg, byte[] buffer, int size, int min_size);
     public native static long           dsn_msg_body_size(long msg);
     public native static long           dsn_msg_rw_ptr(long msg, long offset_begin);
-    public native static byte[]         dsn_msg_from_address(long msg, byte[] ep);
-    public native static byte[]         dsn_msg_to_address(long msg);
+    public native static long           dsn_msg_from_address(long msg);
+    public native static long           dsn_msg_to_address(long msg);
     public native static boolean        dsn_rpc_register_handler(int code, String name, int index);
     public native static void           dsn_rpc_unregiser_handler(int code); 
     public native static long           dsn_rpc_create_response_task(long request, int pram, int reply_hash);
-    public native static void           dsn_rpc_call(byte[] server, long task, long tracker);
-    public native static long           dsn_rpc_call_wait(byte[] server, long request);
-    public native static void           dsn_rpc_call_one_way(byte[] server, long request);
+    public native static void           dsn_rpc_call(long server, long task, long tracker);
+    public native static long           dsn_rpc_call_wait(long server, long request);
+    public native static void           dsn_rpc_call_one_way(long server, long request);
     public native static void           dsn_rpc_reply(long resp);
     public native static long           dsn_rpc_get_response(long rpc_call);
     public native static void           dsn_rpc_enqueue_response(long rpc_call, int err, long response);
@@ -224,8 +240,8 @@ public class Nativecalls
     public native static long           dsn_file_create_aio_task(int code, int index, int hash);
     public native static void           dsn_file_read(long file, byte[] buffer, int count, long offset, long cb, long tracker);
     public native static void           dsn_file_write(long file, byte[] buffer, int count, long offset, long cb, long tracker);
-    public native static void           dsn_file_copy_remote_directory(byte[] remote, String source_dir, String dest_dir, boolean overwrite, long cb, long tracker);
-    public native static void           dsn_file_copy_remote_files(byte[] remote, String source_dir, String[] source_files, String dest_dir, boolean overwrite, long cb, long tracker);
+    public native static void           dsn_file_copy_remote_directory(long remote, String source_dir, String dest_dir, boolean overwrite, long cb, long tracker);
+    public native static void           dsn_file_copy_remote_files(long remote, String source_dir, String[] source_files, String dest_dir, boolean overwrite, long cb, long tracker);
     public native static long           dsn_file_get_io_size(long cb_task);
     public native static void           dsn_file_task_enqueue(long cb_task, int err, long size);
     

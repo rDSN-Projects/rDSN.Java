@@ -76,21 +76,21 @@ JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1create_1response
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1call
-(JNIEnv *env, jclass cla, jbyteArray server, jlong task, jlong tracker)
+(JNIEnv *env, jclass cla, jlong server, jlong task, jlong tracker)
 {
-    dsn_rpc_call(Jbyte_To_Address(env, server), (dsn_task_t)task, (dsn_task_tracker_t)tracker);
+    dsn_rpc_call(*(dsn_address_t*)&server, (dsn_task_t)task, (dsn_task_tracker_t)tracker);
 }
 
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1call_1wait
-(JNIEnv *env, jclass cla, jbyteArray server, jlong request)
+(JNIEnv *env, jclass cla, jlong server, jlong request)
 {
-    return (jlong)dsn_rpc_call_wait(Jbyte_To_Address(env, server), (dsn_message_t)request);
+    return (jlong)dsn_rpc_call_wait(*(dsn_address_t*)&server, (dsn_message_t)request);
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1call_1one_1way
-(JNIEnv *env, jclass cla, jbyteArray server, jlong request)
+(JNIEnv *env, jclass cla, jlong server, jlong request)
 {
-    dsn_rpc_call_one_way(Jbyte_To_Address(env, server), (dsn_message_t)request);
+    dsn_rpc_call_one_way(*(dsn_address_t*)&server, (dsn_message_t)request);
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1rpc_1reply

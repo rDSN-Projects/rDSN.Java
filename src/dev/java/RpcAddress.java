@@ -1,7 +1,7 @@
 package dsn.dev.java;
 
 public class RpcAddress {
-	public RpcAddress(byte[] ad)
+	public RpcAddress(long ad)
     {
         addr = ad;
     }
@@ -11,10 +11,10 @@ public class RpcAddress {
         addr = Nativecalls.dsn_address_build(host, port);
     }
 
-    public byte[] Addr()
+    public long Addr()
     {
         return addr;
     }
 
-    public byte[] addr;
+    public long addr;
 }

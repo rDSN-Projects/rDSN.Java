@@ -83,19 +83,15 @@ JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1rw_1ptr
     return (jlong)dsn_msg_rw_ptr((void*)msg, offset_begin);
 }
 
-JNIEXPORT jbyteArray JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1from_1address
-(JNIEnv *env, jclass cla, jlong msg, jbyteArray ep)
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1from_1address
+(JNIEnv *env, jclass cla, jlong msg)
 {
-    dsn_address_t *addr = Jbyte_To_Address(env, ep);
-    dsn_msg_from_address((void*)msg, addr);
-    return Address_To_Jbyte(env, *addr);
+    return *(uint64_t*)&dsn_msg_from_address((void*)msg);
 }
 
-JNIEXPORT jbyteArray JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1to_1address
-(JNIEnv *env, jclass cla, jlong msg, jbyteArray ep)
+JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1msg_1to_1address
+(JNIEnv *env, jclass cla, jlong msg)
 {
-    dsn_address_t addr;
-    dsn_msg_to_address((void*)msg, &addr);
-    return Address_To_Jbyte(env, addr);
+    return *(uint64_t*)&dsn_msg_to_address((void*)msg);
 }
 

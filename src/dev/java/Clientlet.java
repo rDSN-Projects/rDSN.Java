@@ -32,7 +32,7 @@ public class Clientlet
     	Nativecalls.dsn_task_tracker_cancel_all(_handle);
     }
     
-    public static byte[] primary_address() { return Nativecalls.dsn_primary_address2(); }
+    public static RpcAddress primary_address() { return new RpcAddress(Nativecalls.dsn_primary_address()); }
     public static int random32(int min, int max) { return Nativecalls.dsn_random32(min, max); }
     public static long random64(long min, long max) { return Nativecalls.dsn_random64(min, max); }
     public static long now_ns() { return Nativecalls.dsn_now_ns(); }
@@ -252,7 +252,7 @@ public class Clientlet
     }
 
     public static long CopyRemoteFiles(
-        byte[] remote,
+    	long remote,
         String source_dir,
         String[] files,
         String dest_dir,
@@ -270,7 +270,7 @@ public class Clientlet
     }
 
     public static long CopyRemoteDirectory(
-    	byte[] remote,
+    	long remote,
         String source_dir,
         String dest_dir,
         boolean overwrite,

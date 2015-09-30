@@ -64,13 +64,13 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1write
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1copy_1remote_1directory
-(JNIEnv *env, jclass cla, jbyteArray remote, jstring source_dir, jstring dest_dir, jboolean overwrite, jlong cbtask, jlong tracker)
+(JNIEnv *env, jclass cla, jlong remote, jstring source_dir, jstring dest_dir, jboolean overwrite, jlong cbtask, jlong tracker)
 {
-    dsn_file_copy_remote_directory(Jbyte_To_Address(env, remote), env->GetStringUTFChars(source_dir, false), env->GetStringUTFChars(dest_dir, false), overwrite, (dsn_task_t)cbtask, (dsn_task_tracker_t)tracker);
+    dsn_file_copy_remote_directory(*(dsn_address_t*)&remote, env->GetStringUTFChars(source_dir, false), env->GetStringUTFChars(dest_dir, false), overwrite, (dsn_task_t)cbtask, (dsn_task_tracker_t)tracker);
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1copy_1remote_1files
-(JNIEnv *env, jclass cla, jbyteArray remote, jstring source_dir, jobjectArray source_files, jstring dest_dir, jboolean overwrite, jlong cbtask, jlong tracker)
+(JNIEnv *env, jclass cla, jlong remote, jstring source_dir, jobjectArray source_files, jstring dest_dir, jboolean overwrite, jlong cbtask, jlong tracker)
 {
     int cnt = env->GetArrayLength(source_files);
     std::vector<std::string> files;
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1copy_1remote_1fi
         env->DeleteLocalRef(jstr);
     }
 
-    dsn_file_copy_remote_files(Jbyte_To_Address(env, remote), env->GetStringUTFChars(source_dir, 0), &files_ptr[0], env->GetStringUTFChars(dest_dir, 0), overwrite, (dsn_task_t)cbtask, (dsn_task_tracker_t)tracker);
+    dsn_file_copy_remote_files(*(dsn_address_t*)&remote, env->GetStringUTFChars(source_dir, 0), &files_ptr[0], env->GetStringUTFChars(dest_dir, 0), overwrite, (dsn_task_t)cbtask, (dsn_task_tracker_t)tracker);
 }
 
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1file_1get_1io_1size

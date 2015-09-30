@@ -35,7 +35,7 @@ public abstract class ServiceApp {
         if (r == 0)
         {
             sapp._started = true;
-            sapp._address.addr = Nativecalls.dsn_primary_address2();
+            sapp._address.addr = Nativecalls.dsn_primary_address();
             sapp._name = argv[0];
         }
         return r;

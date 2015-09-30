@@ -1,7 +1,7 @@
 package dsn.app.echo;
 
+import dsn.dev.java.*;
 import dsn.dev.java.Nativecalls.*;
-import dsn.dev.java.utils.*;
 
 public class EchoHelper {
     public static TaskCode RPC_ECHO_ECHO_PING;
