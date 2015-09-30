@@ -19,7 +19,7 @@ void get_aio_callback_env()
 {
     if (aio_callback.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&aio_callback.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&aio_callback.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&aio_callback.env, NULL);

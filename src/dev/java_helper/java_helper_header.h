@@ -4,6 +4,8 @@
 # include <dsn/service_api_c.h>
 # include <dsn/ports.h>
 
+# define DSN_JNI_VERSION JNI_VERSION_1_6
+
 jstring chartojstring(JNIEnv* env, const char* str);
 
 static __thread struct java_function

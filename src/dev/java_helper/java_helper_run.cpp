@@ -8,7 +8,7 @@ void get_appcreate_callback_env()
 {
     if (appcreate.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&appcreate.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&appcreate.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&appcreate.env, NULL);
@@ -35,7 +35,7 @@ void get_appstart_callback_env()
 {
     if (appstart.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&appstart.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&appstart.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&appstart.env, NULL);
@@ -68,7 +68,7 @@ void get_appdestroy_callback_env()
 {
     if (appdestroy.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&appdestroy.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&appdestroy.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&appdestroy.env, NULL);

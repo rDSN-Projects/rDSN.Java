@@ -7,7 +7,7 @@ void get_task_callback_env()
 {
     if (task_callback.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&task_callback.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&task_callback.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&task_callback.env, NULL);
@@ -41,7 +41,7 @@ void get_task_timer_callback_env()
 {
     if (task_timer_callback.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&task_timer_callback.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&task_timer_callback.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&task_timer_callback.env, NULL);

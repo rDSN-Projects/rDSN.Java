@@ -7,7 +7,7 @@ void get_request_callback_env()
 {
     if (request_callback.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&request_callback.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&request_callback.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&request_callback.env, NULL);
@@ -47,7 +47,7 @@ void get_response_callback_env()
 {
     if (response_callback.magic != 0xdeadbeef)
     {
-        int getEnvStat = g_vm->GetEnv((void **)&response_callback.env, JNI_VERSION_1_8);
+        int getEnvStat = g_vm->GetEnv((void **)&response_callback.env, DSN_JNI_VERSION);
         if (getEnvStat == JNI_EDETACHED)
         {
             g_vm->AttachCurrentThread((void **)&response_callback.env, NULL);
