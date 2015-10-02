@@ -16,7 +16,7 @@ set(MY_PROJ_INC_PATH "${JNI_INCLUDE_DIRS}")
 
 set(MY_PROJ_LIBS "${JNI_LIBRARIES}")
 
-set(MY_PROJ_LIB_PATH)
+set(MY_PROJ_LIB_PATH "")
 
 # Extra files that will be installed
 set(MY_BINPLACES "")
