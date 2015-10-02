@@ -11,19 +11,19 @@ jstring chartojstring(JNIEnv* env, const char* str)
     jstring encoding = env->NewStringUTF("utf-8");
     return (jstring)env->NewObject(clazz, method, bytes, encoding);
 }
-
-jbyteArray Address_To_Jbyte(JNIEnv* env, dsn_address_t addr)
-{
-    int len = sizeof(addr);
-    jbyteArray addrbyte = env->NewByteArray(len + 1);
-    env->SetByteArrayRegion(addrbyte, 0, len, (jbyte*)&addr);
-    return addrbyte;
-}
-
-dsn_address_t* Jbyte_To_Address(JNIEnv* env, jbyteArray addrbyte)
-{
-    return (dsn_address_t*)env->GetByteArrayElements(addrbyte, false);
-}
+//
+//jbyteArray Address_To_Jbyte(JNIEnv* env, dsn_address_t addr)
+//{
+//    int len = sizeof(addr);
+//    jbyteArray addrbyte = env->NewByteArray(len + 1);
+//    env->SetByteArrayRegion(addrbyte, 0, len, (jbyte*)&addr);
+//    return addrbyte;
+//}
+//
+//dsn_address_t* Jbyte_To_Address(JNIEnv* env, jbyteArray addrbyte)
+//{
+//    return (dsn_address_t*)env->GetByteArrayElements(addrbyte, false);
+//}
 
 /*void Get_JavaVM(JNIEnv* env)
 {

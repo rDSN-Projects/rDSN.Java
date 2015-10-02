@@ -136,32 +136,37 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1run_1config
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build
 (JNIEnv *env, jclass cla, jstring hosts, jshort ports)
 {
-    return *(uint64_t*)&dsn_address_build(env->GetStringUTFChars(hosts, 0), ports);
+    auto ret = dsn_address_build(env->GetStringUTFChars(hosts, 0), ports);
+    return *(uint64_t*)&ret;
 }
 
 
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build_1ipv4
 (JNIEnv *env, jclass cla, jint ipv4, jshort port)
 {
-    return *(uint64_t*)&dsn_address_build_ipv4(ipv4, port);
+    auto ret = dsn_address_build_ipv4(ipv4, port);
+    return *(uint64_t*)&ret;
 }
 
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build_1uri
 (JNIEnv *env, jclass cla, jlong uri)
 {
-    return *(uint64_t*)&dsn_address_build_uri((void*)uri);
+    auto ret = dsn_address_build_uri((void*)uri);
+    return *(uint64_t*)&ret;
 }
 
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1build_1group
 (JNIEnv *env, jclass cla, jlong g)
 {
-    return *(uint64_t*)&dsn_address_build_group((void*)g);
+    auto ret = dsn_address_build_group((void*)g);
+    return *(uint64_t*)&ret;
 }
 
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1uri_1build
 (JNIEnv *env, jclass cla, jstring url)
 {
-    return (jlong)dsn_uri_build(env->GetStringUTFChars(url, false));
+    // TODO: returned string needs to be ReleaseStringUTFChars?
+    return (jlong)dsn_uri_build(env->GetStringUTFChars(url, 0));
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1uri_1destroy
@@ -173,7 +178,7 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1uri_1destroy
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1build
 (JNIEnv *env, jclass cla, jstring name)
 {
-    return (jlong)dsn_group_build(env->GetStringUTFChars(name, false));
+    return (jlong)dsn_group_build(env->GetStringUTFChars(name, 0));
 }
 
 JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1add
@@ -197,7 +202,8 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1set_1leader
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1get_1leader
 (JNIEnv *env, jclass cla, jlong g)
 {
-    return *(uint64_t*)&dsn_group_get_leader((void*)g);
+    auto ret = dsn_group_get_leader((void*)g);
+    return *(uint64_t*)&ret;
 }
 
 JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1is_1leader
@@ -209,7 +215,8 @@ JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1is_1leader
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1next
 (JNIEnv *env, jclass cla, jlong g, jlong ep)
 {
-    return *(uint64_t*)&dsn_group_next((void*)g, *(dsn_address_t*)&ep);
+    auto ret = dsn_group_next((void*)g, *(dsn_address_t*)&ep);
+    return *(uint64_t*)&ret;
 }
 
 JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1destroy
@@ -221,19 +228,20 @@ JNIEXPORT void JNICALL Java_dsn_dev_java_Nativecalls_dsn_1group_1destroy
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1primary_1address
 (JNIEnv *env, jclass cla)
 {
-    return *(uint64_t*)&dsn_primary_address();
+    auto ret = dsn_primary_address();
+    return *(uint64_t*)&ret;
 }
 
 JNIEXPORT jint JNICALL Java_dsn_dev_java_Nativecalls_dsn_1ipv4_1from_1host
 (JNIEnv *env, jclass cla, jstring name)
 {
-    return dsn_ipv4_from_host(env->GetStringUTFChars(name, false));
+    return dsn_ipv4_from_host(env->GetStringUTFChars(name, 0));
 }
 
 JNIEXPORT jint JNICALL Java_dsn_dev_java_Nativecalls_dsn_1ipv4_1local
 (JNIEnv *env, jclass cla, jstring network_interface)
 {
-    return dsn_ipv4_local(env->GetStringUTFChars(network_interface, false));
+    return dsn_ipv4_local(env->GetStringUTFChars(network_interface, 0));
 }
 
 JNIEXPORT jstring JNICALL Java_dsn_dev_java_Nativecalls_dsn_1address_1to_1string

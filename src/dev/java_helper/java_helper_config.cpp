@@ -3,13 +3,13 @@ extern JavaVM *g_vm;
 JNIEXPORT jstring JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1value_1string
 (JNIEnv *env, jclass cla, jstring section, jstring key, jstring default_value, jstring dsptr)
 {
-    return chartojstring(env, dsn_config_get_value_string(env->GetStringUTFChars(section, false), env->GetStringUTFChars(key, false), env->GetStringUTFChars(default_value, false), env->GetStringUTFChars(dsptr, false)));
+    return chartojstring(env, dsn_config_get_value_string(env->GetStringUTFChars(section, 0), env->GetStringUTFChars(key, 0), env->GetStringUTFChars(default_value, 0), env->GetStringUTFChars(dsptr, 0)));
 }
 
 JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1value_1bool
 (JNIEnv *env, jclass cla, jstring section, jstring key, jboolean default_value, jstring dsptr)
 {
-    return dsn_config_get_value_bool(env->GetStringUTFChars(section, false), env->GetStringUTFChars(key, false), default_value, env->GetStringUTFChars(dsptr, false));
+    return dsn_config_get_value_bool(env->GetStringUTFChars(section, 0), env->GetStringUTFChars(key, 0), default_value, env->GetStringUTFChars(dsptr, 0));
 }
 
 /*
@@ -20,7 +20,7 @@ JNIEXPORT jboolean JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1value
 JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1value_1uint64
 (JNIEnv *env, jclass cla, jstring section, jstring key, jlong default_value, jstring dsptr)
 {
-    return dsn_config_get_value_uint64(env->GetStringUTFChars(section, false), env->GetStringUTFChars(key, false), default_value, env->GetStringUTFChars(dsptr, false));
+    return dsn_config_get_value_uint64(env->GetStringUTFChars(section, 0), env->GetStringUTFChars(key, 0), default_value, env->GetStringUTFChars(dsptr, 0));
 }
 
 /*
@@ -31,7 +31,7 @@ JNIEXPORT jlong JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1value_1u
 JNIEXPORT jdouble JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1value_1double
 (JNIEnv *env, jclass cla, jstring section, jstring key, jdouble default_value, jstring dsptr)
 {
-    return dsn_config_get_value_double(env->GetStringUTFChars(section, false), env->GetStringUTFChars(key, false), default_value, env->GetStringUTFChars(dsptr, false));
+    return dsn_config_get_value_double(env->GetStringUTFChars(section, 0), env->GetStringUTFChars(key, 0), default_value, env->GetStringUTFChars(dsptr, 0));
 }
 
 /*
@@ -44,7 +44,7 @@ JNIEXPORT jint JNICALL Java_dsn_dev_java_Nativecalls_dsn_1config_1get_1all_1keys
 {
     const char* buf[1000];
     int buf_cnt = 0;
-    int ret = dsn_config_get_all_keys(env->GetStringUTFChars(section, false), buf, &buf_cnt);
+    int ret = dsn_config_get_all_keys(env->GetStringUTFChars(section, 0), buf, &buf_cnt);
     for (int i = 0; i < buf_cnt; i++)
     {
         jstring str = chartojstring(env, buf[i]);

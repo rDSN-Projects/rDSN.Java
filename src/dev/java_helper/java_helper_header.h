@@ -8,7 +8,7 @@
 
 jstring chartojstring(JNIEnv* env, const char* str);
 
-static __thread struct java_function
+struct java_function
 {
     int magic;
     JNIEnv *env;

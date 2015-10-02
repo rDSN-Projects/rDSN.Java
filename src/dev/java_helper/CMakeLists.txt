@@ -10,15 +10,13 @@ set(MY_PROJ_SRC "")
 # "GLOB" for non-recursive search
 set(MY_SRC_SEARCH_MODE "GLOB_RECURSE")
 
-if(WIN32)
-	set(MY_PROJ_INC_PATH "${JAVA_HOME}/include" "${JAVA_HOME}/include/win32")
-else()
-	set(MY_PROJ_INC_PATH "${JAVA_HOME}/include")
-endif()
+find_package(JNI)
+	
+set(MY_PROJ_INC_PATH "${JNI_INCLUDE_DIRS}")
 
-set(MY_PROJ_LIBS "jawt" "jvm")
+set(MY_PROJ_LIBS "${JNI_LIBRARIES}")
 
-set(MY_PROJ_LIB_PATH "${JAVA_HOME}/lib")
+set(MY_PROJ_LIB_PATH)
 
 # Extra files that will be installed
 set(MY_BINPLACES "")
