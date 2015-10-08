@@ -1,22 +1,23 @@
-cmake_minimum_required(VERSION 2.8.8)
+set(MY_PROJ_NAME "dsn.dev.java")
 
-find_package(Java REQUIRED)
+# Source files under CURRENT project directory will be automatically included.
+# You can manually set MY_PROJ_SRC to include source files under other directories.
+set(MY_PROJ_SRC "")
 
-include(UseJava)
+# Search mode for source files under CURRENT project directory?
+# "GLOB_RECURSE" for recursive search
+# "GLOB" for non-recursive search
+set(MY_SRC_SEARCH_MODE "GLOB")
 
-project (dsn.dev.java)
+set(MY_PROJ_INC_PATH "")
 
-#set(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.6" "-target" "1.6")
+set(MY_PROJ_LIBS "")
 
-file("GLOB_RECURSE"
-	TEMP_PROJ_JAVA_SRC
-	"${CMAKE_CURRENT_SOURCE_DIR}/*.java"
-	)
-	
-add_jar(dsn_dev_java_jar ${TEMP_PROJ_JAVA_SRC} VERSION 1.0.0)
+set(MY_PROJ_LIB_PATH "")
 
-get_target_property(_jarFile dsn.dev.java JAR_FILE)
-get_target_property(_classDir dsn.dev.java CLASSDIR)
+# Extra files that will be installed
+set(MY_BINPLACES "")
 
-message(STATUS "Jar file ${_jarFile}")
-message(STATUS "Class compiled to ${_classDir}")
+set(MY_BOOST_PACKAGES "")
+
+dsn_add_java_shared_library()
